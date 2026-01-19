@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    font-family: 'Noto Sans', sans-serif;
+    overflow-x: hidden;
+}
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.hero-section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+    padding-left: 6em;
+    margin: 10px;
+}
+.hero-section h1{
+    font-weight: 1000;
+    cursor: pointer;
+    margin: 0;
+    font-family: 'luckiest guy', sans-serif;
+}
+.hero-section .hero ul{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.hero-section .hero ul li{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.hero-section .hero ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+.hero-section .hero ul li a:hover{
+    background-color:  rgb(240, 240, 240);
+    border-radius: 20px;
+    padding: 5px;
+}
+#acc {
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    color: white;
+    font-size: 0.86rem;
+    padding: 10px 20px 10px 20px;
+}
+/* HEADER */
+header{
+    background-color: blueviolet;
+}
+.welcoming {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcoming .image{
+    height: 58vh;
+    background-image: url(img/manga.jpg);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcoming .para{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.432);
+    height: 100%;
+
+}
+.welcoming .para h2 {
+    font-size: 3em;
+    color: white;
+    margin: 0;
+    height: auto;
+    font-family: 'luckiest guy', sans-serif;
+    font-weight: 200;
+ 
+}
+.para p {
+    font-size: 0.9em;
+    color: rgb(193, 193, 193);
+    margin: 0;
+    padding: 0;
+    
+}
+
+.welcoming .browse-more {
+    background-color: rgb(0, 0, 0);
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 25px;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 0.25em;
+}
+.welcoming .browse-more a{
+    color: white;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+/* footer */
+.foot {
+    margin-top: 10px;
+    
+}
+.foot p {
+    margin: 0;
+    color: white;
+}
+.foot .col{
+    display: grid;
+    grid-template-columns: 5;
+    grid-template-areas: 
+    "a a b c d";
+    height: 31vh;
+}
+
+.foot .col ul li a{
+    text-decoration: none;
+    list-style: none;
+}
+.foot .col-a{
+    grid-area: a;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.foot .col-a h1{
+    margin: 0;
+}
+.foot .col-a .image-container{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    justify-self: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.foot .col-a .image-container img{
+    height: 3vh;
+    cursor: pointer;
+}
+.col-a .more {
+    background-color: blue;
+    width: 70%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.col-a .more a{
+    color: white;
+    text-decoration: none;
+}
+.col-a .endings {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    margin-top: 12px;
+}
+
+.foot .col-b{
+    grid-area: b;
+}
+.foot .col-c{
+    grid-area: c;
+
+}
+.foot .col-d{
+    grid-area: d;
+}
+.foot .col-a ul h2, .foot .col-b ul h2, .foot .col-c ul h2,
+.foot .col-d ul h2{
+    margin: 0;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+.foot .col-a ul li a, .foot .col-b ul li a, .foot .col-c ul li a,
+.foot .col-d ul li a, .col-a .endings p{
+    text-decoration: none;
+    color: rgb(96, 96, 96);
+    font-size: 12px;
+
+}
+.foot .col-a ul li, .foot .col-b ul li, .foot .col-c ul li,
+.foot .col-d ul li{
+    list-style: none;
+}

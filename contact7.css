@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    font-family: 'Noto Sans', sans-serif;
+    overflow-x: hidden;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hero-section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+    padding-left: 6em;
+    /* margin: 10px; */
+    width: 90%;
+}
+.hero-section h1{
+    font-weight: 1000;
+    cursor: pointer;
+    margin: 0;
+       font-family: 'luckiest guy', sans-serif;
+}
+.hero-section .hero ul{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.hero-section .hero ul li{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.hero-section .hero ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+.hero-section .hero ul li a:hover{
+    background-color:  rgb(240, 240, 240);
+    border-radius: 20px;
+    padding: 5px;
+}
+#acc {
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    color: white;
+    font-size: 0.86rem;
+    padding: 8px;
+}
+/* HEADER */
+.heads {
+    margin-top: 10px;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background:  
+    
+    url(img/huhu.jpg);
+    margin-bottom: 30px;
+}
+.heads h1 {
+    margin: 0;
+    font-family: "luckiest guy", sans-serif;
+    color: rgb(0, 0, 0);
+}
+.heads p {
+    margin: 0;
+   
+}
+/* card */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-columns:
+    "a b c d";
+    width: 100vw;
+    height: 40vh;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .card {
+    height: 70%;
+    width: 70%;
+    justify-self: center;
+    align-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    
+    
+}
+.container h3 {
+    margin: 0;
+}
+.container .card p, .container .card a{
+    font-size: 0.9rem;  
+    color: black;
+   
+}
+.container .card img{
+    width: 11%;
+    height: 13%;
+    margin-bottom: 20px;
+}
+.card a {
+    grid-area: a;
+}
+.card b {
+    grid-area: a;
+}
+.card c {
+    grid-area: a;
+}
+.card .d {
+    grid-area: a;
+}
+/* FAQ */
+.FAQ {
+    display: flex;
+    justify-content: center;
+   align-items: center;
+   flex-direction: column; 
+   
+}
+.FAQ .FAQ-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    
+}
+.FAQ .q-card{
+    padding: 15px;
+    width: 94%;
+    border: 1px solid rgba(0, 0, 0, 0.308);
+}
+/* package */
+.package {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    "free basic pro premium";
+    width: 80vw;
+    height: 80vh;
+    justify-content: space-between;
+    align-items: center;  
+}
+.package-card {
+    background-color: rgba(225, 225, 225, 0.414);
+    height: 80%;
+    width: 75%;
+    justify-self: center;
+    border-radius: 20px;
+    padding: 35px;
+}
+.plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+ 
+}
+.plan p {
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+      margin: 0;
+}
+.plan h3{
+    margin-bottom: 0;
+    font-size: 1.6rem;
+    margin-top: 0;
+}
+.plan .detail {
+    padding: 0;
+    font-size: 0.7rem;
+     color: rgb(0, 0, 0);
+}
+button {
+    width: 70%;
+    border: none;
+    padding: 5px;   
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+
+.foot {
+    margin-top: 10px;
+    width: 100vw;
+    
+}
+.foot p {
+    margin: 0;
+    color: white;
+}
+.foot .col{
+    display: grid;
+    grid-template-columns: 5;
+    grid-template-areas: 
+    "a a b c d";
+    height: 31vh;
+}
+
+.foot .col ul li a{
+    text-decoration: none;
+    list-style: none;
+}
+.foot .col-a{
+    grid-area: a;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.foot .col-a h1{
+    margin: 0;
+}
+.foot .col-a .image-container{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    justify-self: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.foot .col-a .image-container img{
+    height: 3vh;
+    cursor: pointer;
+}
+.col-a .more {
+    background-color: blue;
+    width: 70%;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.col-a .more a{
+    color: white;
+    text-decoration: none;
+}
+.col-a .endings {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    margin-top: 12px;
+}
+
+.foot .col-b{
+    grid-area: b;
+}
+.foot .col-c{
+    grid-area: c;
+
+}
+.foot .col-d{
+    grid-area: d;
+}
+.foot .col-a ul h2, .foot .col-b ul h2, .foot .col-c ul h2,
+.foot .col-d ul h2{
+    margin: 0;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+.foot .col-a ul li a, .foot .col-b ul li a, .foot .col-c ul li a,
+.foot .col-d ul li a, .col-a .endings p{
+    text-decoration: none;
+    color: rgb(96, 96, 96);
+    font-size: 12px;
+
+}
+.foot .col-a ul li, .foot .col-b ul li, .foot .col-c ul li,
+.foot .col-d ul li{
+    list-style: none;
+}
+h2 {
+    margin-bottom: 0;
+}

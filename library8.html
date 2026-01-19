@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Bookrary</title>
+    <link rel="stylesheet" href="library8.css">
+      <link rel="icon" type="image" href="img/Frocan-Franco_Logo_design,_black_and_white_only,_high-contrast._Retro_anime_man_ecfc1b68-3018-42f4-a5d9-729d71a492c6.png">
+</head>
+<body>
+   <nav class="hero-section">
+        <h1>Bookrary</h1>
+        <div class="hero">
+            <ul>
+                  <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus9.html">ABOUT US</a></li>
+                <li><a href="library8.html">LIBRARY</a></li>
+                        <li><a href="contact7.html">CONTACT</a></li>
+                <li><a href="index.html" id="acc">Back</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+   <header class="heads">
+        <div class="left">
+            <div class="text">
+                <h1>DEMON SLAYER : KIMETSU NO YAIBA</h1>
+                <h3>23 Volumes Author : Koyoharu Gotouge</h3>
+                <div class="des">
+                    <p>It is the Taisho Period in Japan. Tanjiro,
+                a kindhearted boy who sells charcoal for a living,
+                finds his family slaughtered by a demon. To make 
+                matters worse, his younger sister Nezuko, the sole 
+                survivor, has been transformed into a demon herself.
+                Though devastated by this grim reality, Tanjiro resolves to become a "
+                demon slayer" so that he can turn his sister back into a human, and kill 
+                the demon that massacred him family.</p>
+                </div>
+            </div>
+            
+            <div class="interact">
+                <button>Read Now</button>
+                <button><a href="readlater10.html" style="text-decoration: none; color: white;">Add to Read-Later</a></button>
+            </div>  
+        </div>
+   </header>
+
+   <div class="pick">
+        <h1 style="margin-left: 50px; color: rgb(0, 0, 0)">Top Favourite >></h1>
+        <div class="pickpanel">
+            <div class="manga" onclick="openPopup('JJK')">
+                <img src="img/jujustu kaisen.jpg" alt="JJK">
+                <p>JUJUTSU KAISEN</p> <br>
+                <p style="color: red;">30 Volumes</p> <br>
+                <p>Author : Gege Akumataki</p>
+            </div>
+            <div class="manga" onclick="openPopup('AOT')">
+                <img src="img/attack on titan poster.jpg" alt="AOT">
+                <p>ATTACK ON TITAN</p> <br>
+                <p style="color: red;">34 Volumes</p> <br>
+                <p>Author : Hajime Isayama</p>
+            </div>
+            <div class="manga" onclick="openPopup('SL')">
+                <img src="img/Poster Solo Leveling.jpg" alt="SL">
+                <p>SOLO-LEVELING</p> <br>
+                <p style="color: red;">8 Volumes</p> <br>
+                <p>Author : Chugong</p>
+            </div>
+            <div class="manga" onclick="openPopup('OP')">
+                <img src="img/download (1).jpg" alt="OP">
+                <p>ONE PIECE</p> <br>
+                <p style="color: red;">107 Volumes (Ongoing)</p> <br>
+                <p>Author : Eiichiro Oda</p>
+            </div>
+        </div>
+    </div>
+    <div class="pick">
+        <h1 style="margin-left: 50px; color: rgb(18, 18, 18)">Trending >></h1>
+        <div class="pickpanel">
+            <div class="manga" onclick="openPopup('DDD')">
+                <img src="img/dandadan.jpg" alt="DDD">
+                <p>DANDADAN</p> <br>
+                <p style="color: red;">20 Volumes</p> <br>
+                <p>Author : Yukinobu Tatsu</p>
+            </div>
+            <div class="manga" onclick="openPopup('TAD')">
+                <img src="img/kusuriya no hitorigoto official art.jpg" alt="TAD">
+                <p>THE APOTHECARY DIARIES</p> <br>
+                <p style="color: red;">16 Volumes</p> <br>
+                <p>Author : Natsu Hyuugu</p>
+            </div>
+            <div class="manga" onclick="openPopup('LOTM')">
+                <img src="img/download (1).jpg" alt="LOTM">
+                <p>LORD OF THE MYSTERIES</p> <br>
+                <p style="color: red;">8 Volumes</p> <br>
+                <p>Author : Ai Qianshui de Wuzei</p>
+            </div>
+            <div class="manga" onclick="openPopup('KN8')">
+                <img src="img/download (2).jpg" alt="KN8">
+                <p>KAIJU NO.8</p> <br>
+                <p style="color: red;">15 Volumes</p> <br>
+                <p>Author : Naoya Matsumoto</p>
+            </div>
+        </div>
+    </div>
+    <div class="pick">
+        <h1 style="margin-left: 50px; color: rgb(0, 0, 0)">Old but Gold >></h1>
+        <div class="pickpanel">
+            <div class="manga" onclick="openPopup('N')">
+                <img src="img/naruto manga cover.jpg" alt="Naruto">
+                <p>NARUTO</p> <br>
+                <p style="color: red;">72 Volumes</p> <br>
+                <p>Author : Masashi Kishimoto</p>
+            </div>
+            <div class="manga" onclick="openPopup('HXH')">
+                <img src="img/hunter x hunter.jpg" alt="HXH">
+                <p>HUNTER X HUNTER</p> <br>
+                <p style="color: red;">38 Volumes</p> <br>
+                <p>Author : Yoshihiro Togashi</p>
+            </div>
+            <div class="manga" onclick="openPopup('BC')">
+                <img src="img/download (3).jpg" alt="BC">
+                <p>BLACK CLOVER</p> <br>
+                <p style="color: red;">36 Volumes</p> <br>
+                <p>Author : Yuki Tabata</p>
+            </div>
+            <div class="manga" onclick="openPopup('B')">
+                <img src="img/BLEACH POSTER_.jpg" alt="Bleach">
+                <p>BLEACH</p> <br>
+                <p style="color: red;">74 Volumes</p> <br>
+                <p>Author : Tite Kubo</p>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="JJK">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">JUJUTSU KAISEN</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Jujutsu Kaisen is a Japanese manga series written and illustrated by Gege Akutami.
+                It was serialized in Shueisha's shōnen manga magazine Weekly Shōnen Jump from March
+                2018 to September 2024, with its chapters collected in 30 tankōbon volumes.</p1>
+            <button class="backbutton" onclick="closePopup('JJK')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="AOT">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">ATTACK ON TITAN</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Attack on Titan (Shingeki no Kyojin) is a groundbreaking action anime series with elements of drama, 
+                horror, and anime featuring intense storytelling, brutal battles, and deep philosophical themes.</p1>
+            <button class="backbutton" onclick="closePopup('AOT')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="SL">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">SOLO-LEVELING</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 12.2px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Solo Leveling, alternatively translated as Only I Level Up is a South Korean fantasy web novel written by Chugong. 
+                It was serialized in Kakao's digital comic and fiction platform KakaoPage beginning on July 25, 2016, and was later
+                published by D&C Media under their Papyrus label since November 4, 2016.
+            </p1>
+            <button class="backbutton" onclick="closePopup('SL')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="OP">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">ONE PIECE</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 12.5px; padding: 10px 40px; text-align: justify; height: 150px;">
+                One Piece is a Japanese manga series written and illustrated by Eiichiro Oda. It follows the adventures of Monkey D.
+                Luffy and his crew, the Straw Hat Pirates, as he explores the Grand Line in search of the mythical treasure known as 
+                the "One Piece" to become the next King of the Pirates.
+            </p1>
+            <button class="backbutton" onclick="closePopup('OP')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="DDD">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">DANDADAN</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 12.5px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Dandadan, also written as Dan Da Dan, is a Japanese web manga series written and illustrated by Yukinobu Tatsu.
+                It has been serialized in Shueisha's Shōnen Jump+ app and website since April 2021, with its chapters collected
+                in 20 tankōbon volumes as of July 2025.
+            </p1>
+            <button class="backbutton" onclick="closePopup('DDD')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="TAD">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">THE APOTHECARY DIARIES</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                The Apothecary Diaries is a Japanese light novel series written by Natsu Hyūga and illustrated by Touko Shino.
+                Since 2011, it has been serialized online on the user-generated novel publishing website Shōsetsuka ni Narō.
+            </p1>
+            <button class="backbutton" onclick="closePopup('TAD')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="LOTM">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">LORD OF THE MYSTERIES</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Lord of Mysteries is a Chinese web novel written by Yuan Ye/Cuttlefish That Loves Diving. Serialized on Qidian 
+                from 2018 to 2020, the story blends steampunk, Lovecraftian horror, and Xuanhuan elements in a Victorian era-inspired world.
+            </p1>
+            <button class="backbutton" onclick="closePopup('LOTM')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="KN8">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">KAIJU NO.8</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 12.3px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Kaiju No. 8, also known in English as Monster #8, is a Japanese web manga series written and illustrated by Naoya Matsumoto. 
+                It was serialized on Shueisha's Shōnen Jump+ online platform from July 2020 to July 2025, with its chapters collected in 15 tankōbon volumes as of March 2025.
+            </p1>
+            <button class="backbutton" onclick="closePopup('KN8')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="N">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">NARUTO</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young, socially isolated ninja who 
+                seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.
+            </p1>
+            <button class="backbutton" onclick="closePopup('N')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="HXH">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">HUNTER X HUNTER</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Hunter × Hunter is a Japanese manga series written and illustrated by Yoshihiro Togashi. It has been serialized in Shueisha's shōnen manga magazine Weekly 
+                Shōnen Jump since March 1998, although the manga has frequently gone on extended hiatuses since 2006.
+            </p1>
+            <button class="backbutton" onclick="closePopup('HXH')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="BC">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">BLACK CLOVER</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 12.4px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Black Clover is a Japanese manga series written and illustrated by Yūki Tabata. It started in Shueisha's shōnen manga magazine Weekly Shōnen Jump in February 2015. 
+                The series ran in the magazine until August 2023, and moved to Jump Giga in December of the same year.
+            </p1>
+            <button class="backbutton" onclick="closePopup('BC')">Back</button>
+        </div>
+    </div>
+    <div class="popup" id="B">
+        <div class="popup-content">
+            <p style="background-color: rgba(174, 0, 0, 0.364); padding: 10px;">BLEACH</p>
+            <button class="pickbutton">Read Now</button>
+            <button class="pickbutton">Add to Read-Later</button>
+            <p1 style="font-size: 13px; padding: 10px 40px; text-align: justify; height: 150px;">
+                Bleach is a Japanese manga series written and illustrated by Tite Kubo. It follows the adventures of teenager Ichigo Kurosaki, who obtains the powers of a Soul 
+                Reaper—a death personification similar to a Grim Reaper—from another Soul Reaper, Rukia Kuchiki.
+            </p1>
+            <button class="backbutton" onclick="closePopup('B')">Back</button>
+        </div>
+    </div>
+    <script>
+        function openPopup(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+        function closePopup(id) {
+            document.getElementById(id).style.display = "none";
+        }
+    </script>
+</body>
+</html>

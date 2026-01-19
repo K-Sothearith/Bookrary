@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Noto Sans', sans-serif;
+}
+/* nav */
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: 
+        linear-gradient(rgba(114, 114, 114, 0.4), rgba(143, 143, 143, 0.4)),
+        url("img/fyfyf.jpg");
+
+}
+.hero-section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+    padding-left: 6em;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.hero-section h1{
+    font-family: 'luckiest guy', sans-serif;
+    font-weight: 50;
+    cursor: pointer;
+    margin: 0;
+    padding-left: 30px;
+    color: rgb(0, 0, 0);
+   
+}
+.hero-section .hero ul{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.hero-section .hero ul li{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.hero-section .hero ul li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+       color: black;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+.hero-section .hero ul li a:hover{
+    background-color:  rgba(0, 0, 0, 0.393);
+    border-radius: 20px;
+    padding: 5px;
+}
+#acc {
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    color: white;
+    font-size: 0.86rem;
+    padding: 8px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.container .card {
+    background-color: rgba(0, 0, 0, 0.438);
+    width: 50vw;
+    height: 70vh;
+    margin-top: 75px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12%;
+     
+}
+.container .card .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.container .card .text h1{
+    font-family: 'luckiest guy', sans-serif;
+    font-weight: 50;
+    font-size: 3em;
+    margin: 0;
+    color: white
+}
+.container .card .text p{
+    margin: 0;
+    color: rgb(255, 255, 255);
+}
+.container .card .text p1{
+    margin: 0;
+    color: rgb(126, 143, 255);
+}
+.container .card .search {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+     flex-direction: column;
+}
+ .card .search .bar input{
+    width: 15vw;
+    border: 0;
+    background-color: white;
+    height: 33px;
+    border-radius: 10px;
+    text-align: center;
+}
+.card .search .bar button{
+    border: 0;
+    width: 33px;
+    background-color: white;
+    height: 33px;
+    border-radius: 10px;
+}
+.card .search p{
+   font-size: 13px;
+   margin: 0;
+   margin-top: 10px;
+   color: white;
+}
+.anime-name ul li {
+      text-align: center;
+      
+}
+.anime-name ul {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin-top: 10px;
+}
+.anime-name ul li a{    
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    font-size: 0.7em;
+    padding: 4px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
