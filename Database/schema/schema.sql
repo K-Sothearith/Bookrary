@@ -1,0 +1,61 @@
+-- Bookrary Database Schema
+-- Location: Database/schema/schema.sql
+
+CREATE TABLE IF NOT EXISTS users (
+  userId INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  age INT DEFAULT 18,
+  modePreference ENUM('dark', 'light') DEFAULT 'dark',
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS manga (
+  mangaId INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(150) NOT NULL,
+  coverImage VARCHAR(500) NOT NULL,
+  bannerImage VARCHAR(500) NOT NULL,
+  synopsis TEXT NOT NULL,
+  totalVolumes INT DEFAULT 1,
+  status VARCHAR(50) DEFAULT 'Ongoing',
+  category VARCHAR(100) DEFAULT 'Manga',
+  genres TEXT NOT NULL,
+  likeAmount INT DEFAULT 0,
+  dislikeAmount INT DEFAULT 0,
+  favoriteAmount INT DEFAULT 0,
+  rating DECIMAL(3,2) DEFAULT 4.50,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS user_favorites (
+  favoriteId INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT NOT NULL,
+  mangaId INT NOT NULL,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_user_fav (userId, mangaId),
+  FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE,
+  FOREIGN KEY (mangaId) REFERENCES manga(mangaId) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS user_read_later (
+  readLaterId INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT NOT NULL,
+  mangaId INT NOT NULL,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_user_read (userId, mangaId),
+  FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE,
+  FOREIGN KEY (mangaId) REFERENCES manga(mangaId) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS user_reactions (
+  reactionId INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT NOT NULL,
+  mangaId INT NOT NULL,
+  type ENUM('LIKE', 'DISLIKE') NOT NULL,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY unique_user_react (userId, mangaId),
+  FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE,
+  FOREIGN KEY (mangaId) REFERENCES manga(mangaId) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

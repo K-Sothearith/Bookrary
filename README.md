@@ -1,21 +1,40 @@
-# 📚 Bookrary — Full-Stack Manga Web Application (React + Express)
+# 📚 Bookrary — Full-Stack Manga Web Application (React + Express + Aiven MySQL)
 
 ![Bookrary Banner](client/public/img/jujustu%20kaisen.jpg)
 
-> **From First-Year HTML/CSS Web Design to Full-Stack React + Express**
+> **From First-Year HTML/CSS Web Design to Full-Stack React + Express + Cloud Database**
 > 
-> *Bookrary* originated as a web design showcase project created by students at the **Cambodia Academy of Digital Technology (CADT)**. Today, it has been completely remade into a modern full-stack single-page application (SPA) powered by **React.js** on the frontend, **Express.js** REST API on the backend, and persistent LocalStorage state management.
+> *Bookrary* originated as a web design showcase project created by students at the **Cambodia Academy of Digital Technology (CADT)**. Today, it has been completely remade into a modern full-stack single-page application (SPA) powered by **React.js** on the frontend, **Express.js** REST API on the backend, and **Aiven Cloud MySQL** relational database.
 
 ---
 
 ## 🌟 Transformation Story & Project Evolution
 
-When we first learned web development at CADT, our team created the original static HTML + CSS website to showcase manga titles. As our technical skillset expanded into modern frontend frameworks (**React JS**) and backend API architecture (**Express JS**), we rebuilt *Bookrary* from the ground up:
+When we first learned web development at CADT, our team created the original static HTML + CSS website to showcase manga titles. As our technical skillset expanded into modern frontend frameworks (**React JS**), backend API architecture (**Express JS**), and cloud relational database management (**MySQL on Aiven Cloud**), we rebuilt *Bookrary* from the ground up:
 
 * **Legacy Codebase Preservation**: All original HTML and CSS static files are safely archived inside the [`Original/`](./Original) folder.
+* **Modular Database Directory (`Database/`)**: Separated into 3 dedicated subfolders:
+  * [`Database/schema/`](./Database/schema): DDL scripts defining database tables.
+  * [`Database/seeds/`](./Database/seeds): DML seed scripts containing inserted manga records.
+  * [`Database/privileges/`](./Database/privileges): SQL privileges and user permission scripts.
 * **Modern UI & Aesthetic**: Upgraded with a dark glassmorphic design system, dynamic animations, custom themes, and mobile-responsive drawers.
 * **Interactive Appearance & Mock Reader**: Added a full-screen Manga Reader experience with chapter selection, zoom controls, double-page flipper view, and vertical webtoon scrolling.
-* **Full-Stack REST API**: Built a modular Express backend server serving a rich catalogue of **100 manga titles** spanning 15+ genres.
+* **Full-Stack REST API & Cloud Database**: Built a modular Express backend server connected via SSL connection pool to **Aiven MySQL Cloud** hosting **100 manga titles** spanning 15+ genres.
+
+---
+
+## 🗄️ Database Architecture (`Database/`)
+
+```
+Database/
+├── schema/
+│   └── schema.sql        # Table DDL definitions (users, manga, user_favorites, user_read_later, user_reactions)
+├── seeds/
+│   └── mangaSeed.sql     # Inserted manga dataset SQL seeds (100 manga titles)
+├── privileges/
+│   └── privileges.sql    # User access control & GRANT statements
+└── initDb.js             # Automated database connection pool manager & schema flow
+```
 
 ---
 
@@ -59,7 +78,7 @@ Focusing on high-fidelity appearance and UI state:
 ---
 
 ### 🎨 4. 100 Multi-Genre Manga Catalogue
-Includes 100 titles categorized under *Top Favorite*, *Trending*, *Old but Gold*, and *New Releases*, with genre tags covering:
+Includes 100 titles stored in MySQL categorized under *Top Favorite*, *Trending*, *Old but Gold*, and *New Releases*, with genre tags covering:
 > **Supernatural • Dark Fantasy • Shonen • Shojo • Seinen • School • Isekai • Fantasy • Comedy • Adventure • Action • Slice of Life • Romance • Horror • Sci-Fi**
 
 ---
@@ -70,9 +89,10 @@ Includes 100 titles categorized under *Top Favorite*, *Trending*, *Old but Gold*
 | :--- | :--- |
 | **Frontend UI** | React 18, Vite, Lucide React Icons, React Router v6, Vanilla CSS Tokens |
 | **Backend REST API** | Express.js, Node.js (ES Modules), CORS, Body-Parser |
+| **Database** | Aiven MySQL Cloud, `mysql2/promise` Connection Pool |
 | **Auth & Security** | JSON Web Tokens (`jsonwebtoken`), Password Hashing (`bcryptjs`), Domain Validators |
-| **Persistence** | Browser LocalStorage engine & Express in-memory state fallback |
 | **Original Archive** | Legacy HTML5 & CSS3 archived in [`Original/`](./Original) |
+| **Database Folders** | `Database/schema/`, `Database/seeds/`, `Database/privileges/` |
 
 ---
 
@@ -80,24 +100,29 @@ Includes 100 titles categorized under *Top Favorite*, *Trending*, *Old but Gold*
 
 ```
 Bookrary/
+├── Database/                    # Dedicated Database Directory
+│   ├── schema/
+│   │   └── schema.sql          # Table DDL for Aiven MySQL
+│   ├── seeds/
+│   │   └── mangaSeed.sql       # 100 manga SQL insert statements
+│   ├── privileges/
+│   │   └── privileges.sql      # User permission & GRANT statements
+│   └── initDb.js               # Connection pool manager & seed runner
 ├── Original/                    # Preserved first-version HTML & CSS files
 │   ├── index.html
 │   ├── library8.html
 │   ├── search2.html
-│   ├── login3.html
-│   ├── aboutus9.html
 │   └── ...
 ├── server/                      # Express REST API Service
+│   ├── .env                    # Secret environment config (Aiven credentials & JWT)
 │   ├── config/
+│   │   └── db.js               # MySQL connection pool wrapper
 │   ├── data/
 │   │   └── mangaData.js        # 100 multi-genre manga dataset
 │   ├── routes/
 │   │   ├── auth.js             # JWT Login, Register, Validation
-│   │   ├── manga.js            # Filtering, Search, Reactions
+│   │   ├── manga.js            # SQL Filtering, Search, Reactions
 │   │   └── contact.js          # Form handler
-│   ├── utils/
-│   │   └── validators.js       # Email domain & password complexity rules
-│   ├── package.json
 │   └── server.js               # Express application entry point
 ├── client/                      # Vite + React Single-Page Application
 │   ├── public/
@@ -106,31 +131,10 @@ Bookrary/
 │   │   ├── components/         # Navbar, Footer, MangaCard, AuthModal, MockReader
 │   │   ├── context/            # AuthContext & ThemeContext
 │   │   ├── pages/              # Home, Library, ReadLater, Favorites, Search, About, Contact
-│   │   ├── utils/              # Client-side validators
-│   │   ├── App.jsx
-│   │   ├── main.jsx
 │   │   └── index.css           # Glassmorphic design system
 │   └── package.json
 └── README.md                    # Upscaled Project Documentation
 ```
-
----
-
-## 📡 API Endpoint Reference
-
-### 1. Authentication Endpoints (`/api/auth`)
-* `POST /api/auth/register` — Creates user account after verifying email domain & password strength.
-* `POST /api/auth/login` — Authenticates credentials and returns signed JWT token.
-* `GET /api/auth/me` — Fetches current user profile from `Bearer` header token.
-* `PUT /api/auth/preferences` — Updates light/dark theme preference.
-
-### 2. Manga Endpoints (`/api/manga`)
-* `GET /api/manga` — Returns manga catalogue with optional `search`, `category`, and `genre` filters.
-* `GET /api/manga/:id` — Fetches detailed metadata for a single manga title.
-* `POST /api/manga/:id/reaction` — Protected endpoint to record `LIKE` or `DISLIKE`.
-
-### 3. Contact Endpoint (`/api/contact`)
-* `POST /api/contact` — Submits contact form messages to CADT support.
 
 ---
 
@@ -142,20 +146,16 @@ Bookrary/
 
 ### 1. Running the Express Backend Server
 ```bash
-cd server
-npm install
-npm run dev
+npm run server
 ```
-The backend REST API will start at: `http://localhost:5000`
+The backend REST API will start at `http://localhost:5000` and connect to **Aiven MySQL Cloud** (`mysql-3e35218b-kst-rithh07.e.aivencloud.com`).
 
 ### 2. Running the React Frontend Application
 In a new terminal window:
 ```bash
-cd client
-npm install
-npm run dev
+npm run client
 ```
-The React SPA will start at: `http://localhost:5173`
+The React SPA will start at `http://localhost:5173`.
 
 ---
 

@@ -2,24 +2,10 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { validateEmail, validatePassword } from "../utils/validators.js";
+import { query } from "../config/db.js";
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET || "bookrary_secret_key_cadt_2026";
-
-// In-memory mock DB store (synchronized with client local storage)
-const usersStore = [];
-
-// Seed default demo user for convenience
-const hashedDemoPassword = bcrypt.hashSync("Bookrary1!", 10);
-usersStore.push({
-  id: "usr_101",
-  username: "CADT_Reader",
-  email: "student@student.cadt.edu.kh",
-  password: hashedDemoPassword,
-  age: 20,
-  modePreference: "dark",
-  createdAt: new Date().toISOString()
-});
+const JWT_SECRET = process.env.JWT_SECRET || "bookrary_cadt_aiven_mysql_super_secret_jwt_2026";
 
 router.post("/register", async (req, res) => {
   try {
@@ -41,35 +27,38 @@ router.post("/register", async (req, res) => {
       });
     }
 
-    const existing = usersStore.find((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (existing) {
+    const existing = await query("SELECT userId FROM users WHERE LOWER(email) = LOWER(?)", [email.trim()]);
+    if (existing.length > 0) {
       return res.status(400).json({ error: "Account with this email already exists." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = {
-      id: "usr_" + Date.now(),
-      username: username.trim(),
-      email: email.trim().toLowerCase(),
-      password: hashedPassword,
-      age: age ? parseInt(age) : 18,
-      modePreference: "dark",
-      createdAt: new Date().toISOString()
-    };
+    const userAge = age ? parseInt(age) : 18;
 
-    usersStore.push(newUser);
-
-    const token = jwt.sign(
-      { id: newUser.id, email: newUser.email, username: newUser.username },
-      JWT_SECRET,
-      { expiresIn: "7d" }
+    const result = await query(
+      "INSERT INTO users (username, email, password, age, modePreference) VALUES (?, ?, ?, ?, 'dark')",
+      [username.trim(), email.trim().toLowerCase(), hashedPassword, userAge]
     );
 
-    const { password: _, ...userWithoutPassword } = newUser;
+    const newUserId = result.insertId;
+    const token = jwt.sign(
+      { id: newUserId, email: email.trim().toLowerCase(), username: username.trim() },
+      JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || "24h" }
+    );
+
+    const newUser = {
+      id: newUserId,
+      username: username.trim(),
+      email: email.trim().toLowerCase(),
+      age: userAge,
+      modePreference: "dark"
+    };
+
     return res.status(201).json({
       message: "Registration successful!",
       token,
-      user: userWithoutPassword
+      user: newUser
     });
   } catch (err) {
     return res.status(500).json({ error: "Server registration error: " + err.message });
@@ -84,23 +73,31 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Email and password are required." });
     }
 
-    const user = usersStore.find((u) => u.email.toLowerCase() === email.trim().toLowerCase());
-    if (!user) {
+    const users = await query("SELECT * FROM users WHERE LOWER(email) = LOWER(?)", [email.trim()]);
+    if (users.length === 0) {
       return res.status(401).json({ error: "Invalid email or password." });
     }
 
+    const user = users[0];
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ error: "Invalid email or password." });
     }
 
     const token = jwt.sign(
-      { id: user.id, email: user.email, username: user.username },
+      { id: user.userId, email: user.email, username: user.username },
       JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: process.env.JWT_EXPIRES_IN || "24h" }
     );
 
-    const { password: _, ...userWithoutPassword } = user;
+    const userWithoutPassword = {
+      id: user.userId,
+      username: user.username,
+      email: user.email,
+      age: user.age,
+      modePreference: user.modePreference
+    };
+
     return res.json({
       message: "Login successful!",
       token,
@@ -111,7 +108,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/me", (req, res) => {
+router.get("/me", async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ error: "Unauthorized: No token provided" });
@@ -120,17 +117,16 @@ router.get("/me", (req, res) => {
   const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const user = usersStore.find((u) => u.id === decoded.id);
-    if (!user) return res.status(404).json({ error: "User not found" });
+    const users = await query("SELECT userId as id, username, email, age, modePreference FROM users WHERE userId = ?", [decoded.id]);
+    if (users.length === 0) return res.status(404).json({ error: "User not found" });
 
-    const { password: _, ...userWithoutPassword } = user;
-    return res.json({ user: userWithoutPassword });
+    return res.json({ user: users[0] });
   } catch (err) {
     return res.status(401).json({ error: "Invalid or expired token" });
   }
 });
 
-router.put("/preferences", (req, res) => {
+router.put("/preferences", async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ error: "Unauthorized" });
@@ -138,11 +134,11 @@ router.put("/preferences", (req, res) => {
 
   try {
     const decoded = jwt.verify(authHeader.split(" ")[1], JWT_SECRET);
-    const user = usersStore.find((u) => u.id === decoded.id);
-    if (user && req.body.modePreference) {
-      user.modePreference = req.body.modePreference;
+    const { modePreference } = req.body;
+    if (modePreference) {
+      await query("UPDATE users SET modePreference = ? WHERE userId = ?", [modePreference, decoded.id]);
     }
-    return res.json({ success: true, modePreference: user?.modePreference });
+    return res.json({ success: true, modePreference });
   } catch (err) {
     return res.status(401).json({ error: "Unauthorized" });
   }
